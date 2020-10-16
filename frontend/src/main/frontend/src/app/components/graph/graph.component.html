@@ -1,0 +1,58 @@
+<div class="container mb-5 d-flex justify-content-center horizontal-scrollable">
+  <div class="graph">
+    <svg id="svg-graph" (click)="OnSvgClick($event)" xmlns="http://www.w3.org/2000/svg">
+      <!--Оси x y-->
+      <line x1="0" y1="150" x2="300" y2="150" stroke="#000720"/>
+      <line x1="150" y1="0" x2="150" y2="300" stroke="#000720"/>
+
+      <!--Деления и обозначения R-->
+      <line x1="280" y1="145" x2="280" y2="155" stroke="#000720"/>
+      <text x="275" y="140">R</text>
+
+      <line x1="215" y1="145" x2="215" y2="155" stroke="#000720"/>
+      <text x="205" y="140">R/2</text>
+
+      <line x1="85" y1="145" x2="85" y2="155" stroke="#000720"/>
+      <text x="70" y="140">-R/2</text>
+
+      <line x1="20" y1="145" x2="20" y2="155" stroke="#000720"/>
+      <text x="10" y="140">-R</text>
+
+      <line x1="145" y1="20" x2="155" y2="20" stroke="#000720"/>
+      <text x="156" y="25">R</text>
+
+      <line x1="145" y1="85" x2="155" y2="85" stroke="#000720"/>
+      <text x="156" y="90">R/2</text>
+
+      <line x1="145" y1="215" x2="155" y2="215" stroke="#000720"/>
+      <text x="156" y="218">-R/2</text>
+
+      <line x1="145" y1="280" x2="155" y2="280" stroke="#000720"/>
+      <text x="156" y="283">-R</text>
+
+      <!--Стрелки на осях-->
+      <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000720"/>
+      <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"/>
+
+      <!--Области-->
+      <rect x="150" y="150" width="130" height="65" fill-opacity="0.4" stroke="black"
+            fill="black"/>
+      <polygon points="150,150 85,150 150,85" fill-opacity="0.4" stroke="black"
+               fill="black"/>
+      <path d="M150 150 L 20 150 C 20 220 80 280 150 280" fill-opacity="0.4" stroke="black"
+            fill="black"/>
+
+      <!--Точка-->
+      <circle id="pointer" r="4" cx="150" cy="150" fill-opacity="1" fill="black"
+              stroke="black">
+        <!--              style="visibility: hidden"-->
+        <!--      >-->
+      </circle>
+
+      <g id="pointGroup">
+
+      </g>
+    </svg>
+  </div>
+
+</div>

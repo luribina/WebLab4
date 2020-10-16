@@ -1,0 +1,7 @@
+# compiled output
+frontend/target/
+frontend/src/main/frontend/dist/
+
+
+# dependencies
+frontend/src/main/frontend/node_modules

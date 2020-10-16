@@ -1,0 +1,44 @@
+<header class="mb-5">
+    <div class="bg-dark collapse" id="navbarHeader" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <div *ngIf="authService.isAuthenticated()" class="mb-5">
+            <h4 class="d-inline-block mr-2 text-white">Вы вошли под именем:</h4>
+            <span class="d-inline-block font-weight-bold text-white">{{authService.getCurrentUser()}}</span>
+          </div>
+          <div>
+            <h4 class="text-white">О лабе</h4>
+            <p class="text-muted">лаба как лаба ничего нового</p>
+          </div>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Выполнили студенты группы P3231</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/luribina" target="_blank" class="text-white">Новикова Анна</a></li>
+            <li><a href="https://github.com/Pivnoy" target="_blank" class="text-white">Макарьев Евгений</a></li>
+            <li><a href="https://github.com/luribina/WebLab4" target="_blank" class="text-white">Github лабы</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+      <div class="navbar-brand d-none d-sm-block">
+        <strong>WebLab4</strong>
+      </div>
+      <div class="navbar-brand d-none d-sm-block">
+        <span>Вариант 2732</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="button-wrapper">
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button *ngIf="authService.isAuthenticated()" type="button" (click)="logOut()" class="btn btn-light ml-5">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

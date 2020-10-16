@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col table-responsive-lg">
+      <table class="table table-bordered my-5">
+        <thead class="thead-dark">
+        <tr class="d-flex">
+          <th class="text-center col-3">X</th>
+          <th class="text-center col-3">Y</th>
+          <th class="text-center col-3">R</th>
+          <th class="text-center col-3">Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let singleData of data" class="d-flex">
+          <td style="word-wrap:break-word" class="text-center col-3">{{singleData.x}}</td>
+          <td style="word-wrap:break-word" class="text-center col-3">{{singleData.y}}</td>
+          <td style="word-wrap:break-word" class="text-center col-3">{{singleData.r}}</td>
+          <td style="word-wrap:break-word" [class.table-danger]="!singleData.result" [class.table-success]="singleData.result" class="text-center col-3">{{singleData.result?"да":"не"}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

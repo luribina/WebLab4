@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <app-graph [data]="data" [currentR]="currentR" [currentData]="currentData" (changeData)="addNewData($event)" ></app-graph>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-form (currentData)="transferDataToGraph($event)" (deleteData)="deleteData()" (currentR)="transferRToGraph($event)" (changeData)="addNewData($event)"></app-form>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-table [data]="data"></app-table>
+    </div>
+  </div>
+</div>

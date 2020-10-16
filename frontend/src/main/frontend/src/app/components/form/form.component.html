@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-dark text-white font-weight-bold">Данные точки</div>
+        <div class="card-body">
+          <form id="dataForm" (input)="xInput.valid && yInput.valid && rInput.valid && transferCurrentData()"
+                #formElement="ngForm" (ngSubmit)="formElement.valid && addData()" name="dataForm"
+                novalidate>
+            <div class="form-group row">
+
+              <label for="xInput" class="col-md-4 col-form-label text-md-right">X</label>
+              <div class="col-md-6">
+
+                <input [appCheckTextInput]="[-5,3]" type="text" #xInput="ngModel" autocomplete="off"
+                       placeholder="(-5;3)" [(ngModel)]="data.x" id="xInput" maxlength="17"
+                       class="form-control text-center" name="x"
+                       required="required">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col">
+                <div *ngIf="xInput.invalid ">
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="formElement.submitted && xInput.errors?.required">
+                    Х не должен быть пустым
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="xInput.errors.notANumber && !xInput.errors?.required">
+                    Х должен быть числом
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="xInput.errors.outOfBounds && !xInput.errors?.required">
+                    Х должен быть больше -5 и меньше 3
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="yInput" class="col-md-4 col-form-label text-md-right">Y</label>
+              <div class="col-md-6">
+                <input [appCheckTextInput]="[-5,5]" type="text" #yInput="ngModel" autocomplete="off"
+                       [(ngModel)]="data.y" placeholder="(-5;5)" maxlength="17" id="yInput"
+                       class="form-control text-center" name="y"
+                       required="required">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div *ngIf="yInput.invalid ">
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="formElement.submitted && yInput.errors?.required">
+                    Y не должен быть пустым
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="yInput.errors.notANumber && !yInput.errors?.required">
+                    Y должен быть числом
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="yInput.errors.outOfBounds && !yInput.errors?.required">
+                    Y должен быть больше -5 и меньше 5
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="rInput" class="col-md-4 col-form-label text-md-right">R</label>
+              <div class="col-md-6">
+                <input [appCheckTextInput]="[0,3]" (input)="rInput.valid && transferCurrentR()" #rInput="ngModel"
+                       type="text" [(ngModel)]="data.r" autocomplete="off"
+                       placeholder="(-5;3)" id="rInput" maxlength="17" class="form-control text-center" name="r"
+                       required="required">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div *ngIf="rInput.invalid ">
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="formElement.submitted && rInput.errors?.required">
+                    R не должен быть пустым
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="rInput.errors.notANumber && !rInput.errors?.required">
+                    R должен быть числом
+                  </div>
+                  <div class="mt-3 text-center alert alert-danger"
+                       *ngIf="rInput.errors.outOfBounds && !rInput.errors?.required">
+                    Да, да написано что (-5;3), но по варианту лабы R только положительный и меньше 3, так что извините
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-fill justify-content-around">
+              <button type="submit" class="btn btn-dark">
+                Check
+              </button>
+              <button type="button" (click)="deleteAllData()" class="btn btn-secondary">
+                Delete
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

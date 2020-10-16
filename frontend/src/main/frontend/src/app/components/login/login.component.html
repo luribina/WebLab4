@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div>
+    <div class="col-lg-10 col-xl-9 py-3 mx-auto border border-dark rounded">
+      <div class="login-form">
+        <h3>Sign in/Sign up</h3>
+        <form name="loginForm" #formElement="ngForm" (ngSubmit)="formElement.form.valid && sendForm()" novalidate>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+          <div class="alert alert-success" role="alert" *ngIf="infoMessage">{{infoMessage}}</div>
+
+          <div class="form-group">
+            <label for="username">User Name</label>
+            <div *ngIf="name.invalid && formElement.submitted" class="alert alert-danger">
+              <div *ngIf="name.errors?.required">
+                Имя не должно быть пустым
+              </div>
+              <div *ngIf="name.errors?.minlength">
+                Минимум 4 знака в имени
+              </div>
+              <div *ngIf="name.errors?.pattern">
+                В имени только латинские буквы
+              </div>
+            </div>
+            <input [(ngModel)]="user.username" pattern="^[A-Za-z0-9_-]+$" #name="ngModel" type="text"
+                   class="form-control" id="username"
+                   name="username"
+                   placeholder="UserName" minlength="4" required="required"/>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div *ngIf="password.invalid && formElement.submitted" class="alert alert-danger">
+              <div *ngIf="password.errors?.required">
+                Пароль не должен быть пустым
+              </div>
+              <div *ngIf="password.errors?.minlength">
+                Минимум 4 знака в пароле
+              </div>
+              <div *ngIf="password.errors?.pattern">
+                В пароле только латинские буквы
+              </div>
+            </div>
+
+            <input [(ngModel)]="user.password" pattern="^[A-Za-z0-9_-]+$" #password="ngModel" type="password"
+                   class="form-control" id="password"
+                   name="password"
+                   placeholder="Password" minlength="4" required="required"/>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" class="btn btn-dark mr-3">Login</button>
+            <button type="submit" (click)="registerFlag=true" class="btn btn-secondary ml-3">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
