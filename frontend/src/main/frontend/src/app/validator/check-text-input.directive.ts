@@ -21,9 +21,8 @@ export class CheckTextInputDirective implements Validator {
 
 }
 
-function isNumber(value: string | number): boolean
-{
+function isNumber(value: string) {
   return ((value != null) &&
     (value !== '') &&
-    !isNaN(Number(value.toString())));
+    !isNaN(Number(value)));
 }

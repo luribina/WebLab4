@@ -9,15 +9,15 @@ import {DataService} from "../../service/data.service";
 })
 export class FormComponent implements OnInit {
 
-  @Output() changeData = new EventEmitter<Data>();
+  @Output() changeData: EventEmitter<Data> = new EventEmitter<Data>();
 
-  @Output() currentData = new EventEmitter<Data>();
+  @Output() currentData: EventEmitter<Data> = new EventEmitter<Data>();
 
-  @Output() currentR = new EventEmitter<number>();
+  @Output() currentR: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output() deleteData=new EventEmitter();
+  @Output() deleteData: EventEmitter<any> = new EventEmitter();
 
-  data: Data=new Data(0,0,1);
+  data: Data = new Data(0, 0, 1);
 
   constructor(private dataService: DataService) {
 
@@ -41,11 +41,11 @@ export class FormComponent implements OnInit {
   }
 
   deleteAllData() {
-    this.dataService.deleteAllData().subscribe(()=>{
-      this.deleteData.emit();
-    },
-      (error)=>{
-      console.log(error)
+    this.dataService.deleteAllData().subscribe(() => {
+        this.deleteData.emit();
+      },
+      (error) => {
+        console.error(error);
       })
   }
 }

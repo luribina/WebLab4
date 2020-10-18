@@ -27,6 +27,6 @@ public class DataService implements IDataService {
     }
 
     public void deleteUserData(User user) {
-        dataRepository.removeAllByUser(user);
+        dataRepository.deleteAllByUser(user);
     }
 }

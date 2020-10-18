@@ -32,13 +32,13 @@ public class DataController {
     }
 
     @CrossOrigin
-    @GetMapping("")
+    @GetMapping
     Collection<Data> allPoints(Principal user) {
         return dataService.getUserData(userService.getUserByName(user.getName()));
     }
 
     @CrossOrigin
-    @PostMapping("")
+    @PostMapping
     Data newPoint(@RequestBody Data newPoint, Principal user) {
         if (!newPoint.validate()) throw new DataNotValidException();
         newPoint.setResult(newPoint.check());
@@ -47,7 +47,7 @@ public class DataController {
     }
 
     @CrossOrigin
-    @DeleteMapping("")
+    @DeleteMapping
     ResponseEntity<String> deleteData(Principal user) {
         User selectedUser = userService.getUserByName(user.getName());
         dataService.deleteUserData(selectedUser);

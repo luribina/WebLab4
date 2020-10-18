@@ -12,9 +12,9 @@ export class LoginComponent implements OnInit {
 
   errorMessage: string;
 
-  user = new User();
+  user: User = new User();
 
-  registerFlag = false;
+  registerFlag: boolean = false;
 
   infoMessage: string;
 
@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.user).subscribe(() => {
         this.authService.createStorageItems(this.user);
-        this.router.navigate(['/main'])
+        this.router.navigate(['/main']);
       },
       () => {
-        this.errorMessage = "Неправильный логин или пароль";
+        this.errorMessage = 'Неправильный логин или пароль';
         this.infoMessage = '';
       }
     )
@@ -38,13 +38,13 @@ export class LoginComponent implements OnInit {
 
   register() {
     this.authService.register(this.user).subscribe(() => {
-        this.infoMessage = "Пользователь зарегистрирован";
+        this.infoMessage = 'Пользователь зарегистрирован';
         this.errorMessage = '';
       },
       (error) => {
-        this.errorMessage = "Пользователь с таким именем уже существует";
+        this.errorMessage = 'Пользователь с таким именем уже существует';
         this.infoMessage = '';
-        console.log(error);
+        console.error(error);
       })
   }
 

@@ -7,9 +7,9 @@ import web.lab4.model.User;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
+@Transactional
 public interface IDataRepository extends JpaRepository<Data, Long> {
     List<Data> findByUser(User user);
 
-    void removeAllByUser(User user);
+    void deleteAllByUser(User user);
 }

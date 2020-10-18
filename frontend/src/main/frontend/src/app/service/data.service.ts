@@ -24,15 +24,17 @@ export class DataService {
 
   constructor(public httpClient: HttpClient) { }
 
-  public getAllData():Observable<any> {
-      return this.httpClient.get(AppComponent.serverUrl+this.dataUrl, {headers:this.dataHeaders()});
+  public getAllData():Observable<Data[]> {
+      return this.httpClient.get<Data[]>(AppComponent.serverUrl+this.dataUrl, {headers:this.dataHeaders()});
   }
 
   public addNewData(data: Data):Observable<Data> {
-      return this.httpClient.post<Data>(AppComponent.serverUrl+this.dataUrl,this.getDataBody(data), {headers:this.dataHeaders()});
+    console.log(this.getDataBody(data));
+    console.log(JSON.stringify(data));
+      return this.httpClient.post<Data>(AppComponent.serverUrl+this.dataUrl,JSON.stringify(data), {headers:this.dataHeaders()});
   }
 
-  public deleteAllData():Observable<any> {
+  public deleteAllData():Observable<string> {
     return this.httpClient.delete(AppComponent.serverUrl+this.dataUrl,{headers:this.dataHeaders(),responseType:'text'});
   }
 }

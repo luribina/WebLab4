@@ -15,9 +15,9 @@ export class GraphComponent implements OnInit, OnChanges {
 
   @Input() currentR: number;
 
-  @Output() changeData=new EventEmitter<Data>();
+  @Output() changeData: EventEmitter<Data> = new EventEmitter<Data>();
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {
@@ -49,14 +49,14 @@ export class GraphComponent implements OnInit, OnChanges {
 
   }
 
-  OnSvgClick(event:MouseEvent) {
-    let rec=document.getElementById("svg-graph").getBoundingClientRect();
-    let cx=(event.x-rec.left);
-    let cy=event.y-rec.top;
-    let r=this.currentR;
-    let x=Number(((cx-150)*r/(+130)).toPrecision(6));
-    let y=Number(((cy-150)*r/(-130)).toPrecision(6));
-    this.dataService.addNewData(new Data(x,y,r)).subscribe((result) => {
+  OnSvgClick(event: MouseEvent) {
+    let rec = document.getElementById('svg-graph').getBoundingClientRect();
+    let cx = (event.x - rec.left);
+    let cy = event.y - rec.top;
+    let r = this.currentR;
+    let x = Number(((cx - 150) * r / (+130)).toPrecision(6));
+    let y = Number(((cy - 150) * r / (-130)).toPrecision(6));
+    this.dataService.addNewData(new Data(x, y, r)).subscribe((result) => {
       this.changeData.emit(result);
     });
   }
@@ -67,13 +67,13 @@ function addPoint(x: number, y: number, r: number) {
   let graph = document.getElementById('pointGroup');
   let cx = x * 130 / r + 150;
   let cy = y * -130 / r + 150;
-  let color = checkPoint(x,y,r)? "green": "red";
+  let color = checkPoint(x, y, r) ? 'green' : 'red';
   let point = `<circle class="point" r="4" cx="${cx}" cy="${cy}" fill-opacity="0.6" fill="${color}"
               stroke="blue"> </circle>`
   graph.insertAdjacentHTML('beforeend', point);
 }
 
-function checkPoint(x: number, y: number, r: number): boolean {
+function checkPoint(x: number, y: number, r: number) {
   return (x <= 0 && y >= 0 && y <= (x + r / 2) ||
     x >= 0 && y <= 0 && y >= -r / 2 && x <= r ||
     x <= 0 && y <= 0 && x * x + y * y <= r * r);

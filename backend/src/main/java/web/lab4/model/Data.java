@@ -1,6 +1,7 @@
 package web.lab4.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "data")
@@ -62,13 +63,13 @@ public class Data {
         this.id = id;
     }
 
-//    public Long getId() {
-//        return id;
-//    }
+    public Long getId() {
+        return id;
+    }
 
-//    public User getUser() {
-//        return user;
-//    }
+    public User getUser() {
+        return user;
+    }
 
     public void setUser(User user) {
         this.user = user;
@@ -87,5 +88,22 @@ public class Data {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Data data = (Data) o;
+        return Objects.equals(id, data.id) &&
+                Objects.equals(x, data.x) &&
+                Objects.equals(y, data.y) &&
+                Objects.equals(r, data.r) &&
+                Objects.equals(result, data.result) &&
+                Objects.equals(user, data.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, x, y, r, result, user);
+    }
 }
 

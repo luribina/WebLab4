@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import {Data} from "../../model/data";
-import {AuthService} from "../../service/auth.service";
 import {DataService} from "../../service/data.service";
 
 
@@ -22,7 +21,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getAllData().subscribe((data)=> {
-      this.data = (data as Data[]);
+      this.data = data;
     })
   }
 
