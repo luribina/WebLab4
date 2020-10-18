@@ -11,6 +11,7 @@ export class AuthService {
   private authHeaders(user: User) {
     let headers: HttpHeaders = new HttpHeaders().set('Accept', 'application/json');
     headers = headers.append('Authorization', 'Basic ' + btoa(user.username + ':' + user.password));
+    headers = headers.append("X-Requested-With", "XMLHttpRequest");
     return headers;
 
   }

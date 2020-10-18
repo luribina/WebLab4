@@ -29,9 +29,10 @@ export class LoginComponent implements OnInit {
         this.authService.createStorageItems(this.user);
         this.router.navigate(['/main']);
       },
-      () => {
+      (error) => {
         this.errorMessage = 'Неправильный логин или пароль';
         this.infoMessage = '';
+        console.error(error);
       }
     )
   }

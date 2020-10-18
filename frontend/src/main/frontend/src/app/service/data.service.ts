@@ -18,10 +18,6 @@ export class DataService {
     return dataHeaders;
   }
 
-  private getDataBody(data: Data) {
-    return {x: data.x, y: data.y,r: data.r};
-  }
-
   constructor(public httpClient: HttpClient) { }
 
   public getAllData():Observable<Data[]> {
@@ -29,8 +25,6 @@ export class DataService {
   }
 
   public addNewData(data: Data):Observable<Data> {
-    console.log(this.getDataBody(data));
-    console.log(JSON.stringify(data));
       return this.httpClient.post<Data>(AppComponent.serverUrl+this.dataUrl,JSON.stringify(data), {headers:this.dataHeaders()});
   }
 
