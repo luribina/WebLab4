@@ -9,6 +9,8 @@ import web.lab4.exception.DataNotValidException;
 import web.lab4.model.Data;
 import web.lab4.model.User;
 import web.lab4.service.DataService;
+import web.lab4.service.IDataService;
+import web.lab4.service.IUserService;
 import web.lab4.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +24,11 @@ import java.util.stream.Collectors;
 @RequestMapping("data")
 
 public class DataController {
-    private final DataService dataService;
-    private final UserService userService;
+    private final IDataService dataService;
+    private final IUserService userService;
 
     @Autowired
-    public DataController(DataService dataService, UserService userService) {
+    public DataController(IDataService dataService, IUserService userService) {
         this.dataService = dataService;
         this.userService = userService;
     }
